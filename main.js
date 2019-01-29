@@ -32,4 +32,22 @@ async function task1() {
    }
 }
 
-task1();
+async function task2(){
+   var el = document.getElementsByClassName("sibling first")[0].getElementsByClassName("deepChild")[0];
+   while(el.className != "sibling first"){
+      el.style.border = "1px solid red";
+      el = el.parentElement;
+      console.log(el);
+      await sleep(1000);
+   }
+   el = el.nextElementSibling;
+   while(el.className != "deepChild"){
+      el.style.border = "1px solid green";
+      el = el.children[0];
+      console.log(el);
+      await sleep(1000);
+   }
+}
+
+//task1();
+task2();
